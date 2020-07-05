@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     debhelper \
     dh-golang \
     gcc-arm-linux-gnueabihf \
-    gcc-multilib \
     git \
     golang-go
 
