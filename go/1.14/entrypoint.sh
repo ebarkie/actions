@@ -2,9 +2,7 @@
 
 set -euo pipefail
 
-echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
-echo "GOOS=$GOOS"
-echo "GOARCH=$GOARCH"
+env | grep -e "^INPUT" -e "^GO"
 
 apt_install() {
     local pkgs="$1"

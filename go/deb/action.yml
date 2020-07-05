@@ -1,0 +1,19 @@
+name: 'Go Debian package pipeline'
+author: 'Eric Barkie'
+description: 'Build a Debian package for a Go program'
+inputs:
+  hostarch:
+    description: 'Host architecture'
+    required: false
+    default: 'amd64'
+outputs:
+  asset_name:
+    description: 'The name of the release asset to upload'
+  asset_path:
+    description: 'The path of the release asset to upload'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'package'
+  color: 'blue'

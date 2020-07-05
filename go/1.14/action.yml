@@ -37,5 +37,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 branding:
-  icon: 'server'
+  icon: 'target'
   color: 'blue'
