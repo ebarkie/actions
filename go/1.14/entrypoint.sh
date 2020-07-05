@@ -6,7 +6,7 @@ echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
 echo "GOOS=$GOOS"
 echo "GOARCH=$GOARCH"
 
-apt_add() {
+apt_install() {
     local pkgs="$1"
 
     echo "*** Installing additional packages: $pkgs"
@@ -75,7 +75,7 @@ go_vet() {
   go vet $(go list ./... | grep -v /examples)
 }
 
-[ "$INPUT_APT_ADD" = "" ] || apk_add "$INPUT_APT_ADD"
+[ "$INPUT_APT_INSTALL" = "" ] || apt_install "$INPUT_APT_INSTALL"
 go_mod_download
 go_generate
 

@@ -2,7 +2,7 @@ name: 'Go 1.14 pipeline'
 author: 'Eric Barkie'
 description: 'Lint, test, and build Go'
 inputs:
-  apt_add:
+  apt_install:
     description: 'Additional packages to install'
     required: false
   build:
