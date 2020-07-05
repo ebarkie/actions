@@ -36,17 +36,17 @@ asset_path() {
     echo "build/$(asset_name)"
 }
 
+build_asset() {
+    echo "*** Build asset"
+
+    zip -j $(asset_path) $(asset_bin) LICENSE
+    echo "::set-output name=asset_name::$(asset_name)"
+    echo "::set-output name=asset_path::$(asset_path)"
+}
+
 go_build() {
-    local build_asset="$1"
-
-    echo "*** Go build" 
+    echo "*** Go build"
     go build -o $(asset_bin)
-
-    if [ "$build_asset" = "true" ]; then
-        zip -j $(asset_path) $(asset_bin) LICENSE
-        echo "::set-output name=asset_name::$(asset_name)"
-        echo "::set-output name=asset_path::$(asset_path)"
-    fi
 }
 
 go_fmt() {
@@ -78,11 +78,10 @@ go_vet() {
 [ "$INPUT_APT_INSTALL" = "" ] || apt_install "$INPUT_APT_INSTALL"
 go_mod_download
 go_generate
-
 if [ "$GOOS" = "linux" ] && [ "$GOARCH" = "amd64" ]; then
     [ "$INPUT_FMT" = "true" ] && go_fmt
     [ "$INPUT_VET" = "true" ] && go_vet
     [ "$INPUT_TEST" = "true" ] && go_test
 fi
-
-[ "$INPUT_BUILD" = "true" ] && go_build "$INPUT_BUILD_ASSET"
+[ "$INPUT_BUILD" = "true" ] || [ "$INPUT_BUILD_ASSET" = "true" ] && go_build
+[ "$INPUT_BUILD_ASSET" = "true" ] && build_asset
