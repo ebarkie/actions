@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates \
     debhelper \
     dh-golang \
+    gcc-arm-linux-gnueabihf \
+    gcc-multilib \
     git \
     golang-go
 
