@@ -9,7 +9,7 @@ echo "GOARCH=$GOARCH"
 apt_install() {
     local pkgs="$1"
 
-    echo "*** Installing additional packages: $pkgs"
+    echo "*** apt installing: $pkgs"
     apt-get update && apt-get install --no-install-recommends -y $pkgs
 }
 
@@ -49,6 +49,13 @@ go_build() {
     go build -o $(asset_bin)
 }
 
+go_get() {
+    local pkgs="$1"
+
+    echo "*** Go get"
+    go get -v $pkgs
+}
+
 go_fmt() {
     echo "*** Go format"
     go fmt ./...
@@ -76,6 +83,7 @@ go_vet() {
 }
 
 [ "$INPUT_APT_INSTALL" = "" ] || apt_install "$INPUT_APT_INSTALL"
+[ "$INPUT_GET" = "" ] || go_get "$INPUT_GET"
 go_mod_download
 go_generate
 if [ "$GOOS" = "linux" ] && [ "$GOARCH" = "amd64" ]; then

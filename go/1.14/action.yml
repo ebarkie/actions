@@ -3,7 +3,7 @@ author: 'Eric Barkie'
 description: 'Lint, test, and build Go'
 inputs:
   apt_install:
-    description: 'Additional packages to install'
+    description: 'Additional packages to apt install'
     required: false
   build:
     description: 'go build'
@@ -17,6 +17,9 @@ inputs:
     description: 'go fmt'
     required: false
     default: 'true'
+  get:
+    description: 'go get'
+    required: false
   test:
     description: 'go test'
     required: false
