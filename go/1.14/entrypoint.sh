@@ -38,8 +38,8 @@ asset_path() {
 
 build_asset() {
     echo "*** Build asset"
-
     zip -j $(asset_path) $(asset_bin) LICENSE
+
     echo "::set-output name=asset_name::$(asset_name)"
     echo "::set-output name=asset_path::$(asset_path)"
 }
@@ -53,7 +53,7 @@ go_get() {
     local pkgs="$1"
 
     echo "*** Go get"
-    go get -v $pkgs
+    go get $pkgs
 }
 
 go_fmt() {
@@ -78,7 +78,6 @@ go_test() {
 
 go_vet() {
   echo "*** Go vet"
-
   go vet $(go list ./... | grep -v /examples)
 }
 
