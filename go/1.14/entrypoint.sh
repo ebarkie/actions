@@ -85,3 +85,5 @@ if [ "$GOOS" = "linux" ] && [ "$GOARCH" = "amd64" ]; then
 fi
 [ "$INPUT_BUILD" = "true" ] || [ "$INPUT_BUILD_ASSET" = "true" ] && go_build
 [ "$INPUT_BUILD_ASSET" = "true" ] && build_asset
+
+exit 0
