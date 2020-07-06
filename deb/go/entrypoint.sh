@@ -4,7 +4,8 @@ set -euo pipefail
 
 env | grep -e "^INPUT"
 
-debchange -v ${INPUT_VERSION#"v"} -D stable -m "Release ${INPUT_VERSION}"
+version=${INPUT_VERSION#"refs/tags/v"}
+debchange -v ${version} -D stable -m "Release v${version}"
 export GOPROXY="https://goproxy.io,direct"
 dpkg-buildpackage --host-arch ${INPUT_HOSTARCH} -uc -us -b -d
 
