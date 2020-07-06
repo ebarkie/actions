@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     ca-certificates \
     debhelper \
+    devscripts \
     dh-golang \
     libc6-dev-armhf-cross \
     gcc-arm-linux-gnueabihf \

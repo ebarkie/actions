@@ -6,6 +6,9 @@ inputs:
     description: 'Host architecture'
     required: false
     default: 'amd64'
+  version:
+    description: 'Changelog version number'
+    required: true
 outputs:
   asset_name:
     description: 'The name of the release asset to upload'
