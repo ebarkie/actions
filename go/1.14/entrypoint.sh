@@ -12,7 +12,7 @@ apt_install() {
 }
 
 asset() {
-    echo "$(basename $GITHUB_REPOSITORY)-$GOOS-$GOARCH"
+    echo "${GITHUB_REPOSITORY##*/}-$GOOS-$GOARCH"
 }
 
 asset_bin() {
