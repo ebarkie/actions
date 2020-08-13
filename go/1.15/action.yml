@@ -1,0 +1,41 @@
+name: 'Go 1.15 pipeline'
+author: 'Eric Barkie'
+description: 'Lint, test, and build Go'
+inputs:
+  apt_install:
+    description: 'Additional packages to apt install'
+    required: false
+  build:
+    description: 'go build'
+    required: false
+    default: 'false'
+  build_asset:
+    description: 'Create a release asset?'
+    required: false
+    default: 'false'
+  fmt:
+    description: 'go fmt'
+    required: false
+    default: 'true'
+  get:
+    description: 'go get'
+    required: false
+  test:
+    description: 'go test'
+    required: false
+    default: 'true'
+  vet:
+    description: 'go vet'
+    required: false
+    default: 'true'
+outputs:
+  asset_name:
+    description: 'The name of the release asset to upload'
+  asset_path:
+    description: 'The path of the release asset to upload'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'target'
+  color: 'blue'
