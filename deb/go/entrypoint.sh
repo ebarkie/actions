@@ -6,6 +6,7 @@ env | grep -e "^INPUT"
 
 version=${INPUT_VERSION##*v}
 debchange -v ${version} -D stable -m "Release v${version}"
+git update-index --assume-unchanged debian/changelog
 export GOPROXY="https://goproxy.io,direct"
 dpkg-buildpackage --host-arch ${INPUT_HOSTARCH} -uc -us -b -d
 
