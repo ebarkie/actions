@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM golang:buster
 
 ENV DEBIAN_FRONTEND=noninteractive
 
