@@ -1,6 +1,10 @@
-FROM golang:buster
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && \
+    apt install --no-install-recommends -y software-properties-common && \
+    add-apt-repository ppa:longsleep/golang-backports
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
