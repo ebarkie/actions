@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     devscripts \
     dh-golang \
     libc6-dev-armhf-cross \
+    libc6-dev-arm64-cross \
     gcc-arm-linux-gnueabihf \
+    gcc-aarch64-linux-gnu \
     git \
     golang-go
 
