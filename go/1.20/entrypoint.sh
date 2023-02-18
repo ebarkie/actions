@@ -47,13 +47,6 @@ go_build() {
     go build -o $(asset_bin)
 }
 
-go_get() {
-    local pkgs="$1"
-
-    echo "*** Go get"
-    go get $pkgs
-}
-
 go_fmt() {
     echo "*** Go format"
     go fmt ./...
@@ -63,6 +56,13 @@ go_generate() {
     echo "*** Go generate"
     git config --global --add safe.directory /github/workspace
     go generate -x ./...
+}
+
+go_install() {
+    local pkgs="$1"
+
+    echo "*** Go install"
+    go install $pkgs
 }
 
 go_mod_download() {
@@ -81,7 +81,7 @@ go_vet() {
 }
 
 [ "$INPUT_APT_INSTALL" = "" ] || apt_install "$INPUT_APT_INSTALL"
-[ "$INPUT_GET" = "" ] || go_get "$INPUT_GET"
+[ "$INPUT_INSTALL" = "" ] || go_install "$INPUT_INSTALL"
 go_mod_download
 go_generate
 if [ "$GOOS" = "linux" ] && [ "$GOARCH" = "amd64" ]; then
