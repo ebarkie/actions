@@ -61,6 +61,7 @@ go_fmt() {
 
 go_generate() {
     echo "*** Go generate"
+    git config --global --add safe.directory /github/workspace
     go generate -x ./...
 }
 
