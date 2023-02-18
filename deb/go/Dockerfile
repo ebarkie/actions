@@ -1,9 +1,9 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
-    apt install -y software-properties-common && \
+    apt install --no-install-recommends -y software-properties-common && \
     add-apt-repository -y ppa:longsleep/golang-backports
 
 RUN apt-get update && apt-get install --no-install-recommends -y \

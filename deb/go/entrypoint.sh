@@ -14,7 +14,7 @@ dpkg-buildpackage --host-arch ${INPUT_HOSTARCH} -uc -us -b -d
 mkdir build
 mv -v ../*.deb build
 asset_path=$(ls build/*.deb)
-echo "::set-output name=asset_name::${asset_path##*/}"
-echo "::set-output name=asset_path::${asset_path}"
+echo "asset_name=${asset_path##*/}" >> ${GITHUB_OUTPUT}
+echo "asset_path=${asset_path}" >> ${GITHUB_OUTPUT}
 
 exit 0
