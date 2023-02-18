@@ -17,8 +17,8 @@ inputs:
     description: 'go fmt'
     required: false
     default: 'true'
-  get:
-    description: 'go get'
+  install:
+    description: 'go install'
     required: false
   test:
     description: 'go test'
